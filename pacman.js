@@ -5,6 +5,8 @@ var lives = 2;
 
 // Define your ghosts here
 
+var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
+
 var inky = {
   menu_option: '1',
   name: 'Inky',
