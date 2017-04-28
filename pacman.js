@@ -107,8 +107,9 @@ function eatGhost(ghost)
          process.exit();
        }
   } else {
-      score += 50;
+      score += 200;
   }
+  ghost.edible = false;
 }
 
 function ghostsEdible() {
@@ -120,6 +121,7 @@ function ghostsEdible() {
 function eatPowerPellet() {
   ghostsEdible();
   powerPellets -= 1;
+  score += 50;
     if (powerPellets === 0) {
       console.log('\n\nOh no! You are out of Power Pellets!')
     }
