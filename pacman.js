@@ -5,9 +5,7 @@ var lives = 2;
 
 // Define your ghosts here
 
-var ghosts = ['Inky', 'Blinky', 'Pinky', 'Clyde']
-
-var inky = {
+var Inky = {
   menu_option: '1',
   name: 'Inky',
   colour: 'Red',
@@ -17,7 +15,7 @@ var inky = {
 
 var Blinky = {
   menu_option: '2',
-  name: 'Blink',
+  name: 'Blinky',
   colour: 'Cyan',
   character: 'Speedy',
   edible: false
@@ -38,6 +36,8 @@ var Clyde = {
   character: 'Pokey',
   edible: false
 };
+
+var ghosts = [Inky, Blinky, Pinky, Clyde]
 
 // replace this comment with your four ghosts setup as objects
 
@@ -68,6 +68,7 @@ function displayMenu() {
   console.log('(3) Eat Pinky');
   console.log('(4) Eat Clyde');
   console.log('(q) Quit');
+  console.log('HAH GOTEEE');
 }
 
 function displayPrompt() {
@@ -82,24 +83,36 @@ function eatDot() {
   score += 10;
 }
 
-function eatGhost() {
+function eatGhost(ghost)
+{
   console.log('\nChomp!');
-  score += 30;
+    if (ghost.edible === false) {
+      console.log('\n'+ ghost.name + ' is not edible! You have been hurt!');
+      lives -= 1;
+       if (lives === 0) {
+         console.log('\nYou tried to eat the ' + ghost.colour + ' ghost, ' + ghost.name +'. You died!');
+         process.exit();
+       }
+  } else {
+      score += 20;
+  }
 }
-
 
 // Process Player's Input
 function processInput(key) {
   switch(key) {
     case '\u0003': // This makes it so CTRL-C will quit the program
     case '1':
-      eatGhost();
+      eatGhost(ghosts[1]);
       break;
     case '2':
-      eatGhost();
+      eatGhost(ghosts[2]);
+      break;
+    case '3':
+      eatGhost(ghosts[3]);
       break;
     case '4':
-      eatGhost();
+      eatGhost(ghosts[4]);
       break;
     case 'q':
       process.exit();
