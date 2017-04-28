@@ -69,12 +69,21 @@ function displayMenu() {
   console.log('\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
   checkPowerPellets();
-  console.log('(1) Eat Inky');
-  console.log('(2) Eat Blinky');
-  console.log('(3) Eat Pinky');
-  console.log('(4) Eat Clyde');
+  console.log('(1) Eat Inky (' + checkStatus(Inky.edible) + ')' );
+  console.log('(2) Eat Blinky (' + checkStatus(Blinky.edible) + ')');
+  console.log('(3) Eat Pinky (' + checkStatus(Pinky.edible) + ')');
+  console.log('(4) Eat Clyde (' + checkStatus(Clyde.edible) + ')');
   console.log('(q) Quit');
   console.log('HAH GOTEEE');
+}
+
+function checkStatus(status) {
+  if (status === false) {
+    return 'inedible';
+}
+  else {
+    return 'edible';
+  }
 }
 
 function checkPowerPellets() {
@@ -96,6 +105,8 @@ function eatDot() {
   score += 10;
 }
 
+// Functions
+
 function eatGhost(ghost)
 {
   console.log('\nChomp!');
@@ -110,6 +121,7 @@ function eatGhost(ghost)
       score += 200;
   }
   ghost.edible = false;
+
 }
 
 function ghostsEdible() {
@@ -127,6 +139,13 @@ function eatPowerPellet() {
     }
 }
 
+// function ghostStatusCheck() {
+//   if "false"
+//   else {
+//     console.log('inedible');
+//   }
+// }`
+
 // Process Player's Input
 function processInput(key) {
   switch(key) {
@@ -136,16 +155,16 @@ function processInput(key) {
       console.log('\nOm nom nom. Time to eat!');
       break;
     case '1':
-      eatGhost(ghosts[1]);
+      eatGhost(ghosts[0]);
       break;
     case '2':
-      eatGhost(ghosts[2]);
+      eatGhost(ghosts[1]);
       break;
     case '3':
-      eatGhost(ghosts[3]);
+      eatGhost(ghosts[2]);
       break;
     case '4':
-      eatGhost(ghosts[4]);
+      eatGhost(ghosts[3]);
       break;
     case 'q':
       process.exit();
