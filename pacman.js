@@ -100,8 +100,19 @@ function eatGhost(ghost)
          process.exit();
        }
   } else {
-      score += 20;
+      score += 50;
   }
+}
+
+function ghostsEdible() {
+  for (var index = 0; index < 4; index++) {
+    ghosts[index].edible = true;
+  }
+}
+
+function eatPowerPellet() {
+  ghostsEdible();
+  powerPellets -= 1;
 }
 
 // Process Player's Input
@@ -109,8 +120,8 @@ function processInput(key) {
   switch(key) {
     case '\u0003': // This makes it so CTRL-C will quit the program
     case 'p':
-      powerPellets -= 1;
-      console.log('\nOm nom nom. Time to eat!')
+      eatPowerPellet();
+      console.log('\nOm nom nom. Time to eat!');
       break;
     case '1':
       eatGhost(ghosts[1]);
