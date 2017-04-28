@@ -68,6 +68,7 @@ function displayPowerPellest() {
 function displayMenu() {
   console.log('\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
+  console.log('(p) Eat Power-Pellets');
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
@@ -107,6 +108,10 @@ function eatGhost(ghost)
 function processInput(key) {
   switch(key) {
     case '\u0003': // This makes it so CTRL-C will quit the program
+    case 'p':
+      powerPellets -= 1;
+      console.log('\nOm nom nom. Time to eat!')
+      break;
     case '1':
       eatGhost(ghosts[1]);
       break;
