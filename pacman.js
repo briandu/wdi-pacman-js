@@ -68,7 +68,7 @@ function displayPowerPellest() {
 function displayMenu() {
   console.log('\nSelect Option:\n');  // each \n creates a new line
   console.log('(d) Eat Dot');
-  console.log('(p) Eat Power-Pellets');
+  checkPowerPellets();
   console.log('(1) Eat Inky');
   console.log('(2) Eat Blinky');
   console.log('(3) Eat Pinky');
@@ -76,6 +76,13 @@ function displayMenu() {
   console.log('(q) Quit');
   console.log('HAH GOTEEE');
 }
+
+function checkPowerPellets() {
+  if (powerPellets > 0) {
+    console.log('(p) Eat Power-Pellets');
+  }
+}
+
 
 function displayPrompt() {
   // process.stdout.write is similar to console.log except it doesn't add a new line after the text
@@ -113,6 +120,9 @@ function ghostsEdible() {
 function eatPowerPellet() {
   ghostsEdible();
   powerPellets -= 1;
+    if (powerPellets === 0) {
+      console.log('\n\nOh no! You are out of Power Pellets!')
+    }
 }
 
 // Process Player's Input
